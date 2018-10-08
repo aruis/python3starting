@@ -1,5 +1,6 @@
 # coding: utf-8
-import sys, os
+import os
+import sys
 
 sys.path.append(os.pardir)  # 为了导入父目录的文件而进行的设定
 import numpy as np
@@ -10,7 +11,7 @@ from two_layer_net import TwoLayerNet
 
 network = TwoLayerNet(input_size=784, hidden_size=50, output_size=10)
 
-iters_num = 1000  # 适当设定循环的次数
+iters_num = 10000  # 适当设定循环的次数
 train_size = x_train.shape[0]
 batch_size = 100
 learning_rate = 0.1
@@ -26,7 +27,8 @@ for i in range(iters_num):
     x_batch = x_train[batch_mask]
     t_batch = t_train[batch_mask]
 
-    grad = network.numerical_gradient(x_batch, t_batch)
+    # grad = network.numerical_gradient(x_batch, t_batch)
+    grad = network.gradient(x_batch, t_batch)
 
     for key in ['W1', 'b1', 'W2', 'b2']:
         network.params[key] -= learning_rate * grad[key]
@@ -40,4 +42,3 @@ for i in range(iters_num):
         train_acc_list.append(train_acc)
         test_acc_list.append(test_acc)
         print("train acc, test acc | " + str(train_acc) + ", " + str(test_acc))
-

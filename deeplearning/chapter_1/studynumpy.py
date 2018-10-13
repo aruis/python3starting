@@ -26,7 +26,10 @@ for row in X:
     print(row)
 
 X = X.flatten()
+print(X.shape)
 print(X)
 print(X[np.array([0, 2, 4])])
 print(X > 15)
 print(X[X > 15])
+
+print(np.array([0, 2, 4]).shape)

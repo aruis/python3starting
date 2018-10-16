@@ -36,3 +36,5 @@ print(X[X > 15])
 
 print(np.array([0, 2, 4]).shape)
 print(np.array([0, 2, 4]).ndim)
+print(np.array([[[]]]).ndim)
+print(np.array([[[]]]).shape)
